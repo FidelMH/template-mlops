@@ -1,11 +1,12 @@
+import os
+import sys
+
 import pandas as pd
 import pytest
-import sys
-import os
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "app"))
 
-from modules.mon_module import add, sub, square, print_data
+from modules.mon_module import add, print_data, square, sub
 
 
 @pytest.fixture
