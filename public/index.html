@@ -73,7 +73,61 @@
              
   <section id="template-devops-documentation">
 <h1>template-devops documentation<a class="headerlink" href="#template-devops-documentation" title="Link to this heading"></a></h1>
-<p>hello world from README.md</p>
+<section id="python-professional-template">
+<h2>python-professional-template<a class="headerlink" href="#python-professional-template" title="Link to this heading"></a></h2>
+<p>A Python project template demonstrating professional development practices: modular code, testing, documentation, and code quality tooling.</p>
+<section id="features">
+<h3>Features<a class="headerlink" href="#features" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Utility functions: <code class="docutils literal notranslate"><span class="pre">add</span></code>, <code class="docutils literal notranslate"><span class="pre">sub</span></code>, <code class="docutils literal notranslate"><span class="pre">square</span></code>, <code class="docutils literal notranslate"><span class="pre">print_data</span></code></p></li>
+<li><p>CSV data loading with pandas</p></li>
+<li><p>Unit tests with pytest and coverage</p></li>
+<li><p>Code quality with ruff (linting + formatting)</p></li>
+<li><p>Documentation with Sphinx</p></li>
+</ul>
+</section>
+<section id="requirements">
+<h3>Requirements<a class="headerlink" href="#requirements" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Python 3.11.14</p></li>
+<li><p><a class="reference external" href="https://github.com/astral-sh/uv">uv</a> (package manager)</p></li>
+</ul>
+</section>
+<section id="installation">
+<h3>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>sync
+</pre></div>
+</div>
+</section>
+<section id="usage">
+<h3>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>app/main.py
+</pre></div>
+</div>
+</section>
+<section id="run-tests">
+<h3>Run tests<a class="headerlink" href="#run-tests" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>pytest
+</pre></div>
+</div>
+</section>
+<section id="project-structure">
+<h3>Project structure<a class="headerlink" href="#project-structure" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>.
+├── app/
+│   ├── main.py          # Entry point
+│   ├── moncsv.csv       # Sample data
+│   └── modules/
+│       └── mon_module.py  # Core functions
+├── tests/
+│   └── test_match_csv.py
+├── docs/
+├── pyproject.toml
+└── README.md
+</pre></div>
+</div>
+</section>
+</section>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
