@@ -1,26 +1,56 @@
 name: CI Quality Check
 
 on:
-    push:
-        branches: [main, dev]
-    pull_request: 
-        branches: [main]
-jobs:
-    test-and-lint:
-        runs-on: ubuntu-latest
+  push:
+    branches: [main, dev]
+  pull_request: 
+    branches: [main]
 
-        steps:
-            - name: Checkout code
-              uses: actions/checkout@v4
-            - name: Install uv
-              uses: astral-sh/setup-uv@v3
-              with:
-                enable-cache: true
-            - name: Set up Python
-              run: uv python install 3.11
-            - name: Lint with Ruff
-              run: |
-                uv run ruff check .
-                uv run ruff format --check .
-            - name: Run Tests with Pytest
-              run: uv run pytest --cov=src tests/
+jobs:
+  test-and-lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          enable-cache: true
+
+      - name: Set up Python
+        run: uv python install 3.11
+
+      - name: Lint with Ruff
+        run: |
+          uv run ruff check .
+          uv run ruff format --check .
+
+      - name: Run Tests with Pytest and Extract Coverage
+        run: |
+          # 1. On lance les tests
+          uv run pytest --cov=src tests/
+          
+          # 2. On extrait le score avec uv run
+          COVERAGE=$(uv run python -m coverage report --format=total)
+          echo "COVERAGE=$COVERAGE" >> $GITHUB_ENV
+          
+          # 3. On calcule la couleur selon le score
+          if [ "$COVERAGE" -ge 80 ]; then
+            echo "COLOR=green" >> $GITHUB_ENV
+          elif [ "$COVERAGE" -ge 50 ]; then
+            echo "COLOR=orange" >> $GITHUB_ENV
+          else
+            echo "COLOR=red" >> $GITHUB_ENV
+          fi
+
+      - name: Update Gist Badge
+        uses: Schneegans/dynamic-badges-action@v1.7.0
+        with:
+          auth: ${{ secrets.GIST_SECRET }}
+          gistID: 1392a599fe97be53ef0d5cff77225b7e
+          filename: coverage.json
+          label: Coverage
+          message: ${{ env.COVERAGE }}%
+          color: ${{ env.COLOR }} # La couleur est maintenant dynamique !
