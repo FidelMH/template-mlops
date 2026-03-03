@@ -4,7 +4,8 @@ A Python project template demonstrating professional development practices: modu
 
 
 [![Build Status](https://github.com/FidelMH/template-mlops/actions/workflows/ci.yml/badge.svg)](https://github.com/FidelMH/template-mlops/actions)
-![Coverage](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/FidelMH/1392a599fe97be53ef0d5cff77225b7e/raw/coverage.json)
+![Coverage](https://img.shields.io/endpoint?url=https%3A%2F%2Fgist.githubusercontent.com%2FFidelMH%2F1392a599fe97be53ef0d5cff77225b7e%2Fraw%2F10987a85029f6568de06dd047aaf1f5cca3c0372%2Fcoverage.json)
+
 
 ## Features
 
