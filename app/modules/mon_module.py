@@ -1,4 +1,4 @@
-def add(a,b):
+def add(a, b):
     """Add two numbeers.
 
     Args:
@@ -9,9 +9,10 @@ def add(a,b):
         int: Sum of a and b
 
     """
-    return a+b
+    return a + b
 
-def sub(a,b):
+
+def sub(a, b):
     """Sub two numbers.
 
     Args:
@@ -22,7 +23,8 @@ def sub(a,b):
         int: subtraction of b from a
 
     """
-    return a-b
+    return a - b
+
 
 def square(a):
     """Return the square of a.
@@ -35,6 +37,7 @@ def square(a):
 
     """
     return a**2
+
 
 def print_data(df):
     """Print a DataFrame and return its number of rows.

@@ -8,6 +8,5 @@ def main():
     print_data(df)
 
 
-
 if __name__ == "__main__":
     main()
