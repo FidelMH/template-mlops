@@ -1,4 +1,5 @@
 import pandas as pd
+import pytest
 import sys
 import os
 
@@ -7,10 +8,19 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "app"))
 from modules.mon_module import add, sub, square, print_data
 
 
-def test_add():
-    assert add(2, 3) == 5
-    assert add(-1, 1) == 0
-    assert add(0, 0) == 0
+@pytest.fixture
+def sample_df():
+    return pd.DataFrame({"name": ["Alice", "Bob"], "age": [25, 30]})
+
+
+@pytest.mark.parametrize("a, b, expected", [
+    (2, 3, 5),
+    (-1, 1, 0),
+    (0, 0, 0),
+])
+
+def test_add(a, b, expected):
+    assert add(a, b) == expected
 
 
 def test_sub():
@@ -25,9 +35,8 @@ def test_square():
     assert square(-4) == 16
 
 
-def test_print_data(capsys):
-    df = pd.DataFrame({"name": ["Alice", "Bob"], "age": [25, 30]})
-    result = print_data(df)
+def test_print_data(sample_df, capsys):
+    result = print_data(sample_df)
     assert result == 2
     captured = capsys.readouterr()
     assert "Alice" in captured.out
