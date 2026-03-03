@@ -1,0 +1,32 @@
+[project]
+name = "python-professional-template"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = "==3.11.14"
+dependencies = [
+    "myst-parser>=5.0.0",
+    "pandas>=3.0.1",
+]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.15.4",
+    "sphinx-rtd-theme>=3.0.0rc1",
+]
+
+
+[tool.ruff]
+target-version =  "py311"
+line-length = 80
+
+[tool.ruff.lint]
+select = ["E", "W", "F", "I", "D"] # Erreurs, Warnings, Pyflakes, Isort, Docstrings
+ignore = ["D100"] # On autorise l'absence de docstring en tout début de fichier
+
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+addopts = "-v --cov=app --cov-report=term-missing"
+
