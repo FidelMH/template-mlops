@@ -1,11 +1,12 @@
+import os
+import sys
+
 import pandas as pd
 import pytest
-import sys
-import os
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "app"))
 
-from modules.mon_module import add, sub, square, print_data
+from modules.mon_module import add, print_data, square, sub
 
 
 @pytest.fixture
@@ -13,12 +14,14 @@ def sample_df():
     return pd.DataFrame({"name": ["Alice", "Bob"], "age": [25, 30]})
 
 
-@pytest.mark.parametrize("a, b, expected", [
-    (2, 3, 5),
-    (-1, 1, 0),
-    (0, 0, 0),
-])
-
+@pytest.mark.parametrize(
+    "a, b, expected",
+    [
+        (2, 3, 5),
+        (-1, 1, 0),
+        (0, 0, 0),
+    ],
+)
 def test_add(a, b, expected):
     assert add(a, b) == expected
 
@@ -43,7 +46,9 @@ def test_print_data(sample_df, capsys):
 
 
 def test_csv_loading():
-    csv_path = os.path.join(os.path.dirname(__file__), "..", "app", "moncsv.csv")
+    csv_path = os.path.join(
+        os.path.dirname(__file__), "..", "app", "moncsv.csv"
+    )
     df = pd.read_csv(csv_path)
     assert len(df) == 5
     assert list(df.columns) == ["name", "age", "score"]
