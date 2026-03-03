@@ -14,12 +14,14 @@ def sample_df():
     return pd.DataFrame({"name": ["Alice", "Bob"], "age": [25, 30]})
 
 
-@pytest.mark.parametrize("a, b, expected", [
-    (2, 3, 5),
-    (-1, 1, 0),
-    (0, 0, 0),
-])
-
+@pytest.mark.parametrize(
+    "a, b, expected",
+    [
+        (2, 3, 5),
+        (-1, 1, 0),
+        (0, 0, 0),
+    ],
+)
 def test_add(a, b, expected):
     assert add(a, b) == expected
 
