@@ -1,7 +1,7 @@
 # python-professional-template
 
 A Python project template demonstrating professional development practices: modular code, testing, documentation, and code quality tooling.
-[![Build Status](https://github.com/FidelMH/template-mlops/actions/workflows/CI.yml/badge.svg)](https://github.com/FidelMH/template-mlops/actions)
+[![Build Status](https://github.com/FidelMH/template-mlops/actions/workflows/ci.yml/badge.svg)](https://github.com/FidelMH/template-mlops/actions)
 
 ## Features
 
