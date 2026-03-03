@@ -21,8 +21,3 @@ template-devops documentation
    self
    mon_module
 
-
-Bibliographie
-----------------------
-.. [1] Fidel, M (2026). *Manuel de Packaging pour l'IA*
-
