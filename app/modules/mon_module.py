@@ -4,7 +4,7 @@ def add(a,b):
     Args:
         a (int): First number
         b (int): Second number
-    
+
     Returns:
         int: Sum of a and b
 
@@ -13,11 +13,11 @@ def add(a,b):
 
 def sub(a,b):
     """Sub two numbers.
-    
+
     Args:
         a (int): First number
         b (int): Second number
-    
+
     Returns:
         int: subtraction of b from a
 
@@ -26,10 +26,10 @@ def sub(a,b):
 
 def square(a):
     """Return the square of a.
-    
+
     Args:
         a (int): First number
-    
+
     Returns:
         int: square of a
 
@@ -37,8 +37,7 @@ def square(a):
     return a**2
 
 def print_data(df):
-    """                                                                                                 
-    Print a DataFrame and return its number of rows.                                                    
+    """Print a DataFrame and return its number of rows.
 
     Args:
         df (pd.DataFrame): DataFrame to print
