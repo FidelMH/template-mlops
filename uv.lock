@@ -339,6 +339,7 @@ dev = [
     { name = "pytest" },
     { name = "pytest-cov" },
     { name = "ruff" },
+    { name = "sphinx" },
     { name = "sphinx-rtd-theme" },
 ]
 
@@ -353,6 +354,7 @@ dev = [
     { name = "pytest", specifier = ">=9.0.2" },
     { name = "pytest-cov", specifier = ">=7.0.0" },
     { name = "ruff", specifier = ">=0.15.4" },
+    { name = "sphinx", specifier = ">=9.0.4" },
     { name = "sphinx-rtd-theme", specifier = ">=3.0.0rc1" },
 ]
 
