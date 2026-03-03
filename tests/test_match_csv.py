@@ -44,7 +44,9 @@ def test_print_data(sample_df, capsys):
 
 
 def test_csv_loading():
-    csv_path = os.path.join(os.path.dirname(__file__), "..", "app", "moncsv.csv")
+    csv_path = os.path.join(
+        os.path.dirname(__file__), "..", "app", "moncsv.csv"
+    )
     df = pd.read_csv(csv_path)
     assert len(df) == 5
     assert list(df.columns) == ["name", "age", "score"]

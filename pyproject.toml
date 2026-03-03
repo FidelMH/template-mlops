@@ -26,6 +26,9 @@ line-length = 80
 select = ["E", "W", "F", "I", "D"] # Erreurs, Warnings, Pyflakes, Isort, Docstrings
 ignore = ["D100"] # On autorise l'absence de docstring en tout début de fichier
 
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["D"] # Pas de docstring obligatoire dans les tests
+
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
