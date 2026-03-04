@@ -1,24 +1,18 @@
 # python-professional-template
 
-A Python project template demonstrating professional development practices: modular code, testing, documentation, and code quality tooling.
-
+Exercice DevOps : template Python avec tests, qualité de code, documentation et CI/CD.
 
 [![Build Status](https://github.com/FidelMH/template-mlops/actions/workflows/ci.yml/badge.svg)](https://github.com/FidelMH/template-mlops/actions)
 ![Coverage](https://img.shields.io/endpoint?url=https%3A%2F%2Fgist.githubusercontent.com%2FFidelMH%2F1392a599fe97be53ef0d5cff77225b7e%2Fraw%2F10987a85029f6568de06dd047aaf1f5cca3c0372%2Fcoverage.json)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
+## Stack
 
-## Features
-
-- Utility functions: `add`, `sub`, `square`, `print_data`
-- CSV data loading with pandas
-- Unit tests with pytest and coverage
-- Code quality with ruff (linting + formatting)
-- Documentation with Sphinx
-
-## Requirements
-
-- Python 3.11.14
-- [uv](https://github.com/astral-sh/uv) (package manager)
+- Python 3.11 · [uv](https://github.com/astral-sh/uv)
+- Tests : pytest + coverage
+- Qualité : ruff (lint + format)
+- Docs : Sphinx → GitHub Pages
+- CI/CD : GitHub Actions
 
 ## Installation
 
@@ -26,30 +20,44 @@ A Python project template demonstrating professional development practices: modu
 uv sync
 ```
 
-## Usage
+## Commandes
 
 ```bash
-uv run python app/main.py
+uv run python app/main.py   # lancer l'app
+uv run pytest               # tests + coverage
+uv run ruff check .         # lint
+uv run ruff format .        # format
 ```
 
-## Run tests
+## Docker
 
 ```bash
-uv run pytest
+docker build -t python-professional-template .
+docker run python-professional-template
 ```
 
-## Project structure
+## Code de conduite
+
+Ce projet respecte le [Contributor Covenant](CODE_OF_CONDUCT.md).
+
+## Contributeurs
+
+- [@FidelMH](https://github.com/FidelMH)
+
+## Structure
 
 ```
 .
 ├── app/
-│   ├── main.py          # Entry point
-│   ├── moncsv.csv       # Sample data
-│   └── modules/
-│       └── mon_module.py  # Core functions
+│   ├── main.py
+│   ├── moncsv.csv
+│   └── modules/mon_module.py
 ├── tests/
 │   └── test_match_csv.py
-├── docs/
-├── pyproject.toml
-└── README.md
+├── docs/source/
+├── .github/workflows/
+│   ├── ci.yml     # lint + tests + badge coverage
+│   └── docs.yml   # déploiement GitHub Pages
+├── Dockerfile
+└── pyproject.toml
 ```
