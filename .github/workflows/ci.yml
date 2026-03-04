@@ -20,7 +20,7 @@ jobs:
           enable-cache: true
 
       - name: Set up Python
-        run: uv python install 3.11
+        run: uv python install 3.11.14
 
       - name: Lint with Ruff
         run: |
