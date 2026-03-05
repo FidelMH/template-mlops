@@ -32,6 +32,7 @@ ignore = ["D100", "D203", "D213"] # D203/D213 incompatibles avec D211/D212
 
 [tool.ruff.lint.per-file-ignores]
 "tests/*" = ["D"] # Pas de docstring obligatoire dans les tests
+"conftest.py" = ["D"] # Pas de docstring obligatoire dans les tests
 
 [tool.pytest.ini_options]
 pythonpath = ["app_api"] 

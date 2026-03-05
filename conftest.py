@@ -14,6 +14,7 @@ engine = create_engine(
 )
 TestingSessionLocal = sessionmaker(bind=engine)
 
+
 @pytest.fixture
 def client():
     Base.metadata.create_all(bind=engine)
@@ -30,6 +31,7 @@ def client():
 
     Base.metadata.drop_all(bind=engine)
     app.dependency_overrides.clear()
+
 
 @pytest.fixture
 def client_with_data(client):
