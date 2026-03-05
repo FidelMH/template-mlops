@@ -13,8 +13,8 @@
 - [x] Configurer la base de données (Base, engine, SessionLocal)
 
 ### `app_api/modules/connect.py`
-- [ ] Configurer la connexion à la base de données via variables d'environnement
-- [ ] Exposer `get_db` (dépendance FastAPI)
+- [x] Configurer la connexion à la base de données via variables d'environnement
+- [x] Exposer `get_db` (dépendance FastAPI)
 
 ### `app_api/modules/crud.py`
 - [ ] Implémenter `create_item`
