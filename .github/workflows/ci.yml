@@ -26,10 +26,10 @@ jobs:
           uv sync --all-groups --directory app_api/
       - name: Lint with Ruff
         run: |
-          uv run --directory app_front/ ruff check app_front
-          uv run --directory app_api/ ruff check app_api
-          uv run --directory app_api/ ruff format --check app_api
-          uv run --directory app_front/ ruff format --check app_front
+          uv run --directory app_front/ ruff check 
+          uv run --directory app_api ruff check 
+          uv run --directory app_api/ ruff format --check 
+          uv run --directory app_front/ ruff format --check 
 
       - name: Run Tests with Pytest and Extract Coverage
         run: |
