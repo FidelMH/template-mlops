@@ -16,13 +16,9 @@ template-devops documentation
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
+   
 
 
    self
    mon_module
-
-
-Bibliographie
-----------------------
-.. [1] Fidel, M (2026). *Manuel de Packaging pour l'IA*
 

@@ -37,4 +37,6 @@ html_title = "Documentation - bases devops - UV"
 
 # On remonte à la racine, puis on descend dans 'app'
 sys.path.insert(0, os.path.abspath("../.."))
-sys.path.insert(0, os.path.abspath("../../app"))
+sys.path.insert(0, os.path.abspath("../../app_api"))
+
+suppress_warnings = ["myst.xref_missing"]
