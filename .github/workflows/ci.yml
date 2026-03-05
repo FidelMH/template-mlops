@@ -22,7 +22,7 @@ jobs:
       - name: Set up Python
         run: uv python install 3.11.14
       - name: Install dependencies
-        run: uv sync --all-groups -r app_api/pyproject.toml
+        run: uv sync --all-groups --directory app_api/
       - name: Lint with Ruff
         run: |
           uv run ruff check .
