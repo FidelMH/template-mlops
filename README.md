@@ -38,7 +38,7 @@ docker run python-professional-template
 
 ## Code de conduite
 
-Ce projet respecte le [Contributor Covenant](CODE_OF_CONDUCT.md).
+Ce projet respecte le [Contributor Covenant](.github/CODE_OF_CONDUCT.md).
 
 ## Contributeurs
 
