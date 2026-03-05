@@ -75,23 +75,18 @@
 <h1>template-devops documentation<a class="headerlink" href="#template-devops-documentation" title="Link to this heading"></a></h1>
 <section id="python-professional-template">
 <h2>python-professional-template<a class="headerlink" href="#python-professional-template" title="Link to this heading"></a></h2>
-<p>A Python project template demonstrating professional development practices: modular code, testing, documentation, and code quality tooling.</p>
-<p><a class="reference external" href="https://github.com/FidelMH/template-mlops/actions"><img alt="Build Status" src="https://github.com/FidelMH/template-mlops/actions/workflows/ci.yml/badge.svg" /></a></p>
-<section id="features">
-<h3>Features<a class="headerlink" href="#features" title="Link to this heading"></a></h3>
+<p>Exercice DevOps : template Python avec tests, qualité de code, documentation et CI/CD.</p>
+<p><a class="reference external" href="https://github.com/FidelMH/template-mlops/actions"><img alt="Build Status" src="https://github.com/FidelMH/template-mlops/actions/workflows/ci.yml/badge.svg" /></a>
+<img alt="Coverage" src="https://img.shields.io/endpoint?url=https%3A%2F%2Fgist.githubusercontent.com%2FFidelMH%2F1392a599fe97be53ef0d5cff77225b7e%2Fraw%2F10987a85029f6568de06dd047aaf1f5cca3c0372%2Fcoverage.json" />
+<a class="reference internal" href="#LICENSE"><span class="xref myst"><img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" /></span></a></p>
+<section id="stack">
+<h3>Stack<a class="headerlink" href="#stack" title="Link to this heading"></a></h3>
 <ul class="simple">
-<li><p>Utility functions: <code class="docutils literal notranslate"><span class="pre">add</span></code>, <code class="docutils literal notranslate"><span class="pre">sub</span></code>, <code class="docutils literal notranslate"><span class="pre">square</span></code>, <code class="docutils literal notranslate"><span class="pre">print_data</span></code></p></li>
-<li><p>CSV data loading with pandas</p></li>
-<li><p>Unit tests with pytest and coverage</p></li>
-<li><p>Code quality with ruff (linting + formatting)</p></li>
-<li><p>Documentation with Sphinx</p></li>
-</ul>
-</section>
-<section id="requirements">
-<h3>Requirements<a class="headerlink" href="#requirements" title="Link to this heading"></a></h3>
-<ul class="simple">
-<li><p>Python 3.11.14</p></li>
-<li><p><a class="reference external" href="https://github.com/astral-sh/uv">uv</a> (package manager)</p></li>
+<li><p>Python 3.11 · <a class="reference external" href="https://github.com/astral-sh/uv">uv</a></p></li>
+<li><p>Tests : pytest + coverage</p></li>
+<li><p>Qualité : ruff (lint + format)</p></li>
+<li><p>Docs : Sphinx → GitHub Pages</p></li>
+<li><p>CI/CD : GitHub Actions</p></li>
 </ul>
 </section>
 <section id="installation">
@@ -100,31 +95,47 @@
 </pre></div>
 </div>
 </section>
-<section id="usage">
-<h3>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>app/main.py
+<section id="commandes">
+<h3>Commandes<a class="headerlink" href="#commandes" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>app/main.py<span class="w">   </span><span class="c1"># lancer l&#39;app</span>
+uv<span class="w"> </span>run<span class="w"> </span>pytest<span class="w">               </span><span class="c1"># tests + coverage</span>
+uv<span class="w"> </span>run<span class="w"> </span>ruff<span class="w"> </span>check<span class="w"> </span>.<span class="w">         </span><span class="c1"># lint</span>
+uv<span class="w"> </span>run<span class="w"> </span>ruff<span class="w"> </span>format<span class="w"> </span>.<span class="w">        </span><span class="c1"># format</span>
 </pre></div>
 </div>
 </section>
-<section id="run-tests">
-<h3>Run tests<a class="headerlink" href="#run-tests" title="Link to this heading"></a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>pytest
+<section id="docker">
+<h3>Docker<a class="headerlink" href="#docker" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>python-professional-template<span class="w"> </span>.
+docker<span class="w"> </span>run<span class="w"> </span>python-professional-template
 </pre></div>
 </div>
 </section>
-<section id="project-structure">
-<h3>Project structure<a class="headerlink" href="#project-structure" title="Link to this heading"></a></h3>
+<section id="code-de-conduite">
+<h3>Code de conduite<a class="headerlink" href="#code-de-conduite" title="Link to this heading"></a></h3>
+<p>Ce projet respecte le <a class="reference internal" href="#.github/CODE_OF_CONDUCT.md"><span class="xref myst">Contributor Covenant</span></a>.</p>
+</section>
+<section id="contributeurs">
+<h3>Contributeurs<a class="headerlink" href="#contributeurs" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/FidelMH">&#64;FidelMH</a></p></li>
+</ul>
+</section>
+<section id="structure">
+<h3>Structure<a class="headerlink" href="#structure" title="Link to this heading"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>.
 ├── app/
-│   ├── main.py          # Entry point
-│   ├── moncsv.csv       # Sample data
-│   └── modules/
-│       └── mon_module.py  # Core functions
+│   ├── main.py
+│   ├── moncsv.csv
+│   └── modules/mon_module.py
 ├── tests/
 │   └── test_match_csv.py
-├── docs/
-├── pyproject.toml
-└── README.md
+├── docs/source/
+├── .github/workflows/
+│   ├── ci.yml     # lint + tests + badge coverage
+│   └── docs.yml   # déploiement GitHub Pages
+├── Dockerfile
+└── pyproject.toml
 </pre></div>
 </div>
 </section>
@@ -134,20 +145,11 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">template-devops documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mon_module.html">Documentation de mes modules</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="mon_module.html#module-modules.mon_module">Mes Fonctions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mon_module.html#module-maths.mon_module">Mes Fonctions</a></li>
 </ul>
 </li>
 </ul>
 </div>
-<section id="bibliographie">
-<h2>Bibliographie<a class="headerlink" href="#bibliographie" title="Link to this heading"></a></h2>
-<aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id1" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
-<p>Fidel, M (2026). <em>Manuel de Packaging pour l’IA</em></p>
-</aside>
-</aside>
-</section>
 </section>
 
 
