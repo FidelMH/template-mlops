@@ -5,6 +5,7 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "fastapi>=0.135.1",
     "myst-parser>=5.0.0",
     "python-dotenv>=1.2.2",
     "sqlalchemy>=2.0.48",
@@ -13,6 +14,7 @@ dependencies = [
 
 [dependency-groups]
 dev = [
+    "httpx>=0.28.1",
     "pandas>=3.0.1",
     "pytest>=9.0.2",
     "pytest-cov>=7.0.0",
@@ -31,9 +33,10 @@ ignore = ["D100", "D203", "D213"] # D203/D213 incompatibles avec D211/D212
 
 [tool.ruff.lint.per-file-ignores]
 "tests/*" = ["D"] # Pas de docstring obligatoire dans les tests
+"conftest.py" = ["D"] # Pas de docstring obligatoire dans les tests
 
 [tool.pytest.ini_options]
-pythonpath = ["."] 
-testpaths = ["../tests"]
+pythonpath = ["app_api"] 
+testpaths = ["tests"]
 python_files = "test_*.py"
-addopts = "-v --cov=maths --cov=models --cov=modules --cov-report=term-missing"
+addopts = "-v --cov=app_api --cov-report=term-missing"
