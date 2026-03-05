@@ -33,7 +33,7 @@ jobs:
       - name: Run Tests with Pytest and Extract Coverage
         run: |
           # 1. On lance les tests
-          uv run pytest --cov=src tests/
+          uv run pytest
           
           # 2. On extrait le score avec uv run
           COVERAGE=$(uv run python -m coverage report --format=total)
