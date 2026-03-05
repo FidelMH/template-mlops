@@ -22,11 +22,14 @@ jobs:
       - name: Set up Python
         run: uv python install 3.11.14
       - name: Install dependencies
-        run: uv sync --all-groups --directory app_api/
+        run: |
+          uv sync --all-groups --directory app_api/
       - name: Lint with Ruff
         run: |
-          uv run ruff check .
-          uv run ruff format --check .
+          uv run --directory app_front/ ruff check app_front
+          uv run --directory app_api/ ruff check app_api
+          uv run --directory app_api/ ruff format --check app_api
+          uv run --directory app_front/ ruff format --check app_front
 
       - name: Run Tests with Pytest and Extract Coverage
         run: |
