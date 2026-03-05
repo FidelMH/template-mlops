@@ -9,7 +9,7 @@
 - [x] Ajouter l'endpoint de santé (`GET /`)
 
 ### `app_api/models/models.py`
-- [ ] Définir le modèle SQLAlchemy (table principale du projet)
+- [x] Définir le modèle SQLAlchemy (table principale du projet)
 - [ ] Configurer la base de données (Base, engine, SessionLocal)
 
 ### `app_api/modules/connect.py`
