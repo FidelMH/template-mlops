@@ -2,7 +2,7 @@ import os
 
 from dotenv import load_dotenv
 from fastapi import FastAPI
-from modules.connect import engine, Base
+from modules.connect import Base, engine
 
 load_dotenv()
 DEBUG = os.getenv("DEBUG", "false").lower() == "true"
@@ -33,5 +33,5 @@ def post_data(data: dict):
 
 if __name__ == "__main__":
     import uvicorn
-    
+
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=DEBUG)
