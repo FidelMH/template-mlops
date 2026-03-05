@@ -10,7 +10,7 @@
 
 ### `app_api/models/models.py`
 - [x] Définir le modèle SQLAlchemy (table principale du projet)
-- [ ] Configurer la base de données (Base, engine, SessionLocal)
+- [x] Configurer la base de données (Base, engine, SessionLocal)
 
 ### `app_api/modules/connect.py`
 - [ ] Configurer la connexion à la base de données via variables d'environnement
