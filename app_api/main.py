@@ -2,7 +2,8 @@ import os
 
 from dotenv import load_dotenv
 from fastapi import FastAPI
-from modules.connect import Base, engine
+from modules.connect import get_db, engine
+from models.models import Base
 
 load_dotenv()
 DEBUG = os.getenv("DEBUG", "false").lower() == "true"
