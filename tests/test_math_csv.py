@@ -4,9 +4,9 @@ import sys
 import pandas as pd
 import pytest
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "app"))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "app_api"))
 
-from modules.mon_module import add, print_data, square, sub
+from maths.mon_module import add, print_data, square, sub
 
 
 @pytest.fixture
@@ -47,7 +47,7 @@ def test_print_data(sample_df, capsys):
 
 def test_csv_loading():
     csv_path = os.path.join(
-        os.path.dirname(__file__), "..", "app", "moncsv.csv"
+        os.path.dirname(__file__), "..", "app_api/data", "moncsv.csv"
     )
     df = pd.read_csv(csv_path)
     assert len(df) == 5
