@@ -24,11 +24,11 @@ dependencies = [
 # "../tests/*" = ["D"] # Pas de docstring obligatoire dans les tests
 
 
-[tool.pytest.ini_options]
-pythonpath = ["."] 
-testpaths = ["../tests"]
-python_files = "test_*.py"
-addopts = "-v --cov=maths --cov=models --cov=modules --cov-report=term-missing"
+# [tool.pytest.ini_options]
+# pythonpath = ["."] 
+# testpaths = ["../tests"]
+# python_files = "test_*.py"
+# addopts = "-v --cov=maths --cov=models --cov=modules --cov-report=term-missing"
 
 
 
