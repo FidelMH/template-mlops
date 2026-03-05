@@ -10,8 +10,8 @@ class Base(DeclarativeBase):
 class User(Base):
     """User model for the database."""
 
-    __tablename__ = "user"
+    __tablename__ = "users"
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str] = mapped_column()
     age: Mapped[int] = mapped_column()
-    score: Mapped[str] = mapped_column()
+    score: Mapped[int] = mapped_column()
