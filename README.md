@@ -3,7 +3,7 @@
 Exercice DevOps : template Python avec tests, qualité de code, documentation et CI/CD.
 
 [![Build Status](https://github.com/FidelMH/template-mlops/actions/workflows/ci.yml/badge.svg)](https://github.com/FidelMH/template-mlops/actions)
-![Coverage](https://img.shields.io/endpoint?url=https%3A%2F%2Fgist.githubusercontent.com%2FFidelMH%2F1392a599fe97be53ef0d5cff77225b7e%2Fraw%2F10987a85029f6568de06dd047aaf1f5cca3c0372%2Fcoverage.json)
+![Coverage](https://img.shields.io/endpoint?url=https%3A%2F%2Fgist.githubusercontent.com%2FFidelMH%2F1392a599fe97be53ef0d5cff77225b7e%2Fraw%2F10987a85029f6568de06dd047aaf1f5cca3c0372%2Fcoverage.json&cacheSeconds=0)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ## Stack
