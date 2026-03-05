@@ -1,16 +1,21 @@
 import os
 
 from dotenv import load_dotenv
-from fastapi import FastAPI
+from fastapi import Depends, FastAPI
+from models.models import Base
+from modules.connect import engine, get_db
+from sqlalchemy.orm import Session
 
 load_dotenv()
 DEBUG = os.getenv("DEBUG", "false").lower() == "true"
+
+Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
 
 @app.get("/health")
-def health():
+def health(db: Session = Depends(get_db)):
     """Health check endpoint to verify that the API is running."""
     return {"status": "ok"}
 
