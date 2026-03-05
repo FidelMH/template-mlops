@@ -1,0 +1,26 @@
+[project]
+name = "python-professional-template"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.2",
+    "pytest-cov>=7.0.0",
+    "ruff>=0.15.4",
+]
+
+
+[tool.ruff]
+target-version =  "py311"
+line-length = 80
+
+[tool.ruff.lint]
+select = ["E", "W", "F", "I", "D"] # Erreurs, Warnings, Pyflakes, Isort, Docstrings
+ignore = ["D100", "D203", "D213"] # D203/D213 incompatibles avec D211/D212
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["D"] # Pas de docstring obligatoire dans les tests
