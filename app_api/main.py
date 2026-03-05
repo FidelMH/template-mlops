@@ -3,7 +3,9 @@ import os
 from dotenv import load_dotenv
 from fastapi import Depends, FastAPI
 from models.models import Base
+from models.schemas import UserCreate, UserResponse
 from modules.connect import engine, get_db
+from modules.crud import create_user, get_users
 from sqlalchemy.orm import Session
 
 load_dotenv()
@@ -15,22 +17,22 @@ app = FastAPI()
 
 
 @app.get("/health")
-def health(db: Session = Depends(get_db)):
+def health():
     """Health check endpoint to verify that the API is running."""
     return {"status": "ok"}
 
 
-@app.get("/data")
-def get_data():
+@app.get("/data", response_model=list[UserResponse])
+def get_data(session: Session = Depends(get_db)):
     """Retrieve data from the API."""
-    data = {}
-    return {"status": "success", "data": data}
+    data = get_users(session)
+    return data
 
 
-@app.post("/data")
-def post_data(data: dict):
+@app.post("/data", response_model=UserResponse)
+def post_data(user: UserCreate, session: Session = Depends(get_db)):
     """Create new data in the API."""
-    return {"status": "success", "data": data, "message": "Created"}
+    return create_user(user, session)
 
 
 if __name__ == "__main__":
