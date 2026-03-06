@@ -1,8 +1,12 @@
+import os
+
 import requests
 import streamlit as st
 from dotenv import load_dotenv
 
 load_dotenv()
+
+API_URL = os.getenv("API_URL", "http://localhost:8000")
 
 
 def main():
@@ -12,7 +16,7 @@ def main():
 
     # Statut API
     try:
-        r = requests.get("http://localhost:8000/health", timeout=2)
+        r = requests.get("API_URL" + "/health", timeout=2)
         if r.ok:
             st.success("API connectée")
         else:
