@@ -4,8 +4,8 @@ from dotenv import load_dotenv
 from fastapi import Depends, FastAPI
 from models.models import Base
 from models.schemas import UserCreate, UserResponse
-from modules.connect import engine, get_db
-from modules.crud import create_user, get_users
+from modules.connect import SessionLocal, engine, get_db
+from modules.crud import create_user, get_users, seed_db
 from sqlalchemy.orm import Session
 
 load_dotenv()
@@ -13,6 +13,9 @@ DEBUG = os.getenv("DEBUG", "false").lower() == "true"
 
 
 Base.metadata.create_all(bind=engine)
+
+with SessionLocal() as session:
+    seed_db(session)
 
 app = FastAPI()
 

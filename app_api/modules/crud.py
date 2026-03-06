@@ -1,3 +1,6 @@
+import os
+
+import pandas as pd
 from models.models import User
 from models.schemas import UserCreate
 from sqlalchemy import select
@@ -18,3 +21,20 @@ def create_user(user: UserCreate, session: Session) -> User:
     session.commit()
     session.refresh(new_user)
     return new_user
+
+
+def seed_db(session: Session) -> None:
+    """Seed the database with initial data from CSV if the table is empty."""
+    if session.scalars(select(User)).first() is not None:
+        return
+    csv_path = os.path.join(
+        os.path.dirname(__file__), "..", "data", "moncsv.csv"
+    )
+    df = pd.read_csv(csv_path)
+    for _, row in df.iterrows():
+        create_user(
+            UserCreate(
+                name=row["name"], age=int(row["age"]), score=float(row["score"])
+            ),
+            session,
+        )
