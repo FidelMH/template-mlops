@@ -3,6 +3,7 @@
 A DevOps training project: 3-tier microservices app with CI/CD, code quality, and automated documentation.
 
 [![CI](https://github.com/FidelMH/template-mlops/actions/workflows/ci.yml/badge.svg)](https://github.com/FidelMH/template-mlops/actions)
+[![CD](https://github.com/FidelMH/template-mlops/actions/workflows/cd.yml/badge.svg)](https://github.com/FidelMH/template-mlops/actions/workflows/cd.yml)
 ![Coverage](https://img.shields.io/endpoint?url=https%3A%2F%2Fgist.githubusercontent.com%2FFidelMH%2F1392a599fe97be53ef0d5cff77225b7e%2Fraw%2F5cae9e33426c2a2bf734c9d9679f9dcdc1276f46%2Fcoverage.json)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
