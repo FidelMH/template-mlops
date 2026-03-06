@@ -10,4 +10,12 @@ wheels/
 .venv
 
 # others
-Projet_1_bases.md
+.coverage
+local.db
+
+# Ignore les fichiers MD sauf les importants
+*.md
+!README.md
+!CHANGELOG.md
+!CONTRIBUTING.md
+!LICENSE.md
