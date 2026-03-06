@@ -16,7 +16,7 @@ def main():
 
     # Statut API
     try:
-        r = requests.get("API_URL" + "/health", timeout=2)
+        r = requests.get(f"{API_URL}/health", timeout=2)
         if r.ok:
             st.success("API connectée")
         else:
