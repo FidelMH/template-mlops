@@ -5,7 +5,6 @@ from sqlalchemy.orm import sessionmaker
 
 # Création de l'unité de contrôle
 DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./local.db")
-print(DATABASE_URL)
 engine = create_engine(DATABASE_URL, echo=True)
 SessionLocal = sessionmaker(bind=engine)
 
