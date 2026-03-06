@@ -1,0 +1,43 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:16-alpine
+    env_file:
+      - .env 
+    ports:
+      - "${DB_PORT:-5432}:5432"
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    networks:
+      - app_network
+
+  app_api:
+    build: ./app_api
+    container_name: app_api
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    networks:
+      - app_network
+    depends_on:
+      - db
+    command: python main.py
+  
+  app_front:
+    build: ./app_front
+    container_name: app_front
+    environment:
+      - API_URL=http://app_api:8000
+    networks:
+      - app_network
+    ports:
+      - "8501:8501"
+    command: streamlit run main.py --server.port 8501 --server.address 0.0.0.0
+
+networks:
+  app_network:
+    driver: bridge
