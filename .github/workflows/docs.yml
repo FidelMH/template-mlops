@@ -24,7 +24,7 @@ jobs:
           version: "latest"
 
       - name: Install dependencies
-        run: uv sync # Installe Sphinx et le thème RTD définis dans le fichier toml
+        run: uv sync --group dev # Installe Sphinx et le thème RTD définis dans le fichier toml
 
       - name: Build Sphinx Documentation
         # On génère le HTML dans le dossier "public"
