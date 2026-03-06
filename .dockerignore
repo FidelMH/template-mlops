@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+app_api/.venv/
+app_front/.venv/
+
+# Tests & qualité
+tests/
+conftest.py
+.coverage
+htmlcov/
+
+# Git
+.git/
+.gitignore
+
+# Env
+.env
+*.env
+
+# Docs
+docs/
+
+# CI
+.github/
+
+# Éditeur
+.vscode/
+*.md
+
+*.db
