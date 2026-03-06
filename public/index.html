@@ -45,6 +45,7 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">template-devops documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mon_module.html">Documentation de mes modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API Reference</a></li>
 </ul>
 
         </div>
@@ -75,69 +76,192 @@
 <h1>template-devops documentation<a class="headerlink" href="#template-devops-documentation" title="Link to this heading"></a></h1>
 <section id="python-professional-template">
 <h2>python-professional-template<a class="headerlink" href="#python-professional-template" title="Link to this heading"></a></h2>
-<p>Exercice DevOps : template Python avec tests, qualité de code, documentation et CI/CD.</p>
-<p><a class="reference external" href="https://github.com/FidelMH/template-mlops/actions"><img alt="Build Status" src="https://github.com/FidelMH/template-mlops/actions/workflows/ci.yml/badge.svg" /></a>
-<img alt="Coverage" src="https://img.shields.io/endpoint?url=https%3A%2F%2Fgist.githubusercontent.com%2FFidelMH%2F1392a599fe97be53ef0d5cff77225b7e%2Fraw%2F10987a85029f6568de06dd047aaf1f5cca3c0372%2Fcoverage.json" />
+<p>A DevOps training project: 3-tier microservices app with CI/CD, code quality, and automated documentation.</p>
+<p><a class="reference external" href="https://github.com/FidelMH/template-mlops/actions"><img alt="CI" src="https://github.com/FidelMH/template-mlops/actions/workflows/ci.yml/badge.svg" /></a>
+<a class="reference external" href="https://github.com/FidelMH/template-mlops/actions/workflows/cd.yml"><img alt="CD" src="https://github.com/FidelMH/template-mlops/actions/workflows/cd.yml/badge.svg" /></a>
+<img alt="Coverage" src="https://img.shields.io/endpoint?url=https%3A%2F%2Fgist.githubusercontent.com%2FFidelMH%2F1392a599fe97be53ef0d5cff77225b7e%2Fraw%2F5cae9e33426c2a2bf734c9d9679f9dcdc1276f46%2Fcoverage.json" />
 <a class="reference internal" href="#LICENSE"><span class="xref myst"><img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" /></span></a></p>
 <section id="stack">
 <h3>Stack<a class="headerlink" href="#stack" title="Link to this heading"></a></h3>
 <ul class="simple">
-<li><p>Python 3.11 · <a class="reference external" href="https://github.com/astral-sh/uv">uv</a></p></li>
-<li><p>Tests : pytest + coverage</p></li>
-<li><p>Qualité : ruff (lint + format)</p></li>
-<li><p>Docs : Sphinx → GitHub Pages</p></li>
-<li><p>CI/CD : GitHub Actions</p></li>
+<li><p><strong>Backend:</strong> Python 3.11, FastAPI, SQLAlchemy, PostgreSQL</p></li>
+<li><p><strong>Frontend:</strong> Streamlit</p></li>
+<li><p><strong>Quality:</strong> ruff (lint + format), pytest + coverage</p></li>
+<li><p><strong>Docs:</strong> Sphinx → GitHub Pages</p></li>
+<li><p><strong>CI/CD:</strong> GitHub Actions, Docker Hub</p></li>
 </ul>
 </section>
-<section id="installation">
-<h3>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>sync
+<section id="architecture">
+<h3>Architecture<a class="headerlink" href="#architecture" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Streamlit (8501) → FastAPI (8000) → PostgreSQL (5432)
 </pre></div>
 </div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Service</p></th>
+<th class="head"><p>Role</p></th>
+<th class="head"><p>Port</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">app_front</span></code></p></td>
+<td><p>Streamlit UI (list/add users)</p></td>
+<td><p>8501</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">app_api</span></code></p></td>
+<td><p>REST API (CRUD users)</p></td>
+<td><p>8000</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">db</span></code></p></td>
+<td><p>PostgreSQL database</p></td>
+<td><p>5432</p></td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="commandes">
-<h3>Commandes<a class="headerlink" href="#commandes" title="Link to this heading"></a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>app/main.py<span class="w">   </span><span class="c1"># lancer l&#39;app</span>
-uv<span class="w"> </span>run<span class="w"> </span>pytest<span class="w">               </span><span class="c1"># tests + coverage</span>
-uv<span class="w"> </span>run<span class="w"> </span>ruff<span class="w"> </span>check<span class="w"> </span>.<span class="w">         </span><span class="c1"># lint</span>
-uv<span class="w"> </span>run<span class="w"> </span>ruff<span class="w"> </span>format<span class="w"> </span>.<span class="w">        </span><span class="c1"># format</span>
-</pre></div>
-</div>
-</section>
-<section id="docker">
-<h3>Docker<a class="headerlink" href="#docker" title="Link to this heading"></a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>python-professional-template<span class="w"> </span>.
-docker<span class="w"> </span>run<span class="w"> </span>python-professional-template
-</pre></div>
-</div>
-</section>
-<section id="code-de-conduite">
-<h3>Code de conduite<a class="headerlink" href="#code-de-conduite" title="Link to this heading"></a></h3>
-<p>Ce projet respecte le <a class="reference internal" href="#.github/CODE_OF_CONDUCT.md"><span class="xref myst">Contributor Covenant</span></a>.</p>
-</section>
-<section id="contributeurs">
-<h3>Contributeurs<a class="headerlink" href="#contributeurs" title="Link to this heading"></a></h3>
+<section id="requirements">
+<h3>Requirements<a class="headerlink" href="#requirements" title="Link to this heading"></a></h3>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/FidelMH">&#64;FidelMH</a></p></li>
+<li><p>Docker &amp; Docker Compose</p></li>
 </ul>
 </section>
-<section id="structure">
-<h3>Structure<a class="headerlink" href="#structure" title="Link to this heading"></a></h3>
+<section id="quick-start">
+<h3>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp<span class="w"> </span>.env.example<span class="w"> </span>.env
+docker-compose<span class="w"> </span>up<span class="w"> </span>--build
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Frontend: http://localhost:8501</p></li>
+<li><p>API docs: http://localhost:8000/docs</p></li>
+</ul>
+</section>
+<section id="environment-variables">
+<h3>Environment Variables<a class="headerlink" href="#environment-variables" title="Link to this heading"></a></h3>
+<p>See <a class="reference internal" href="#.env.example"><span class="xref myst">.env.example</span></a> for all variables.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default (local)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">DATABASE_URL</span></code></p></td>
+<td><p>Database connection string</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sqlite:///./local.db</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">POSTGRES_USER</span></code></p></td>
+<td><p>PostgreSQL username</p></td>
+<td><p>—</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">POSTGRES_PASSWORD</span></code></p></td>
+<td><p>PostgreSQL password</p></td>
+<td><p>—</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">POSTGRES_DB</span></code></p></td>
+<td><p>Database name</p></td>
+<td><p>—</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="api-endpoints">
+<h3>API Endpoints<a class="headerlink" href="#api-endpoints" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Method</p></th>
+<th class="head"><p>Route</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>GET</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/health</span></code></p></td>
+<td><p>Health check</p></td>
+</tr>
+<tr class="row-odd"><td><p>GET</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/data</span></code></p></td>
+<td><p>List all users</p></td>
+</tr>
+<tr class="row-even"><td><p>POST</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/data</span></code></p></td>
+<td><p>Create a new user</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>POST /data body:</strong></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Alice&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;age&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;score&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">95.5</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="development-commands">
+<h3>Development Commands<a class="headerlink" href="#development-commands" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>check<span class="w">     </span><span class="c1"># lint + format check</span>
+make<span class="w"> </span>fix-lint<span class="w">  </span><span class="c1"># auto-fix lint issues</span>
+make<span class="w"> </span><span class="nb">test</span><span class="w">      </span><span class="c1"># run tests with coverage</span>
+</pre></div>
+</div>
+<p>To run locally without Docker (inside <code class="docutils literal notranslate"><span class="pre">app_api/</span></code> or <code class="docutils literal notranslate"><span class="pre">app_front/</span></code>):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>sync
+uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>main.py
+</pre></div>
+</div>
+</section>
+<section id="ci-cd-pipelines">
+<h3>CI/CD Pipelines<a class="headerlink" href="#ci-cd-pipelines" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Workflow</p></th>
+<th class="head"><p>Trigger</p></th>
+<th class="head"><p>Action</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ci.yml</span></code></p></td>
+<td><p>push / PR</p></td>
+<td><p>Lint (ruff) + tests + coverage badge</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cd.yml</span></code></p></td>
+<td><p>push to <code class="docutils literal notranslate"><span class="pre">main</span></code></p></td>
+<td><p>Build &amp; push Docker images to Docker Hub</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">docs.yml</span></code></p></td>
+<td><p>push to <code class="docutils literal notranslate"><span class="pre">main</span></code></p></td>
+<td><p>Build Sphinx docs → GitHub Pages</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">security.yml</span></code></p></td>
+<td><p>push / PR / daily</p></td>
+<td><p>Secret scanning with gitleaks</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="project-structure">
+<h3>Project Structure<a class="headerlink" href="#project-structure" title="Link to this heading"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>.
-├── app/
+├── app_api/           # FastAPI backend
 │   ├── main.py
-│   ├── moncsv.csv
-│   └── modules/mon_module.py
+│   ├── maths/
+│   ├── models/
+│   └── modules/       # DB connection &amp; CRUD
+├── app_front/         # Streamlit frontend
+│   ├── main.py
+│   └── pages/
 ├── tests/
-│   └── test_match_csv.py
 ├── docs/source/
 ├── .github/workflows/
-│   ├── ci.yml     # lint + tests + badge coverage
-│   └── docs.yml   # déploiement GitHub Pages
-├── Dockerfile
+├── docker-compose.yml
+├── Makefile
 └── pyproject.toml
 </pre></div>
 </div>
+</section>
+<section id="contributors">
+<h3>Contributors<a class="headerlink" href="#contributors" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/FidelMH">&#64;FidelMH</a></p></li>
+</ul>
 </section>
 </section>
 <div class="toctree-wrapper compound">
@@ -146,6 +270,13 @@ docker<span class="w"> </span>run<span class="w"> </span>python-professional-tem
 <li class="toctree-l1 current"><a class="current reference internal" href="#">template-devops documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mon_module.html">Documentation de mes modules</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="mon_module.html#module-maths.mon_module">Mes Fonctions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-modules.crud">CRUD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-modules.connect">Database Connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#models">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#schemas">Schemas</a></li>
 </ul>
 </li>
 </ul>

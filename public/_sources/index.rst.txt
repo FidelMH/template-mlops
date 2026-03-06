@@ -21,4 +21,5 @@ template-devops documentation
 
    self
    mon_module
+   api
 

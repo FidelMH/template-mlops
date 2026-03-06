@@ -39,4 +39,4 @@ html_title = "Documentation - bases devops - UV"
 sys.path.insert(0, os.path.abspath("../.."))
 sys.path.insert(0, os.path.abspath("../../app_api"))
 
-suppress_warnings = ["myst.xref_missing"]
+suppress_warnings = ["myst.xref_missing", "ref.ref"]
