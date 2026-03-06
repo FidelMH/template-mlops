@@ -1,63 +1,112 @@
 # python-professional-template
 
-Exercice DevOps : template Python avec tests, qualité de code, documentation et CI/CD.
+A DevOps training project: 3-tier microservices app with CI/CD, code quality, and automated documentation.
 
-[![Build Status](https://github.com/FidelMH/template-mlops/actions/workflows/ci.yml/badge.svg)](https://github.com/FidelMH/template-mlops/actions)
+[![CI](https://github.com/FidelMH/template-mlops/actions/workflows/ci.yml/badge.svg)](https://github.com/FidelMH/template-mlops/actions)
 ![Coverage](https://img.shields.io/endpoint?url=https%3A%2F%2Fgist.githubusercontent.com%2FFidelMH%2F1392a599fe97be53ef0d5cff77225b7e%2Fraw%2F5cae9e33426c2a2bf734c9d9679f9dcdc1276f46%2Fcoverage.json)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ## Stack
 
-- Python 3.11 · [uv](https://github.com/astral-sh/uv)
-- Tests : pytest + coverage
-- Qualité : ruff (lint + format)
-- Docs : Sphinx → GitHub Pages
-- CI/CD : GitHub Actions
+- **Backend:** Python 3.11, FastAPI, SQLAlchemy, PostgreSQL
+- **Frontend:** Streamlit
+- **Quality:** ruff (lint + format), pytest + coverage
+- **Docs:** Sphinx → GitHub Pages
+- **CI/CD:** GitHub Actions, Docker Hub
 
-## Installation
+## Architecture
 
+```
+Streamlit (8501) → FastAPI (8000) → PostgreSQL (5432)
+```
+
+| Service    | Role                              | Port |
+|------------|-----------------------------------|------|
+| `app_front` | Streamlit UI (list/add users)    | 8501 |
+| `app_api`   | REST API (CRUD users)            | 8000 |
+| `db`        | PostgreSQL database              | 5432 |
+
+## Requirements
+
+- Docker & Docker Compose
+
+## Quick Start
+
+```bash
+cp .env.example .env
+docker-compose up --build
+```
+
+- Frontend: http://localhost:8501
+- API docs: http://localhost:8000/docs
+
+## Environment Variables
+
+See [.env.example](.env.example) for all variables.
+
+| Variable            | Description               | Default (local)          |
+|---------------------|---------------------------|--------------------------|
+| `DATABASE_URL`      | Database connection string | `sqlite:///./local.db`  |
+| `POSTGRES_USER`     | PostgreSQL username        | —                       |
+| `POSTGRES_PASSWORD` | PostgreSQL password        | —                       |
+| `POSTGRES_DB`       | Database name              | —                       |
+
+## API Endpoints
+
+| Method | Route     | Description        |
+|--------|-----------|--------------------|
+| GET    | `/health` | Health check       |
+| GET    | `/data`   | List all users     |
+| POST   | `/data`   | Create a new user  |
+
+**POST /data body:**
+```json
+{ "name": "Alice", "age": 30, "score": 95.5 }
+```
+
+## Development Commands
+
+```bash
+make check     # lint + format check
+make fix-lint  # auto-fix lint issues
+make test      # run tests with coverage
+```
+
+To run locally without Docker (inside `app_api/` or `app_front/`):
 ```bash
 uv sync
+uv run python main.py
 ```
 
-## Commandes
+## CI/CD Pipelines
 
-```bash
-uv run python app/main.py   # lancer l'app
-uv run pytest               # tests + coverage
-uv run ruff check .         # lint
-uv run ruff format .        # format
-```
+| Workflow        | Trigger           | Action                                     |
+|-----------------|-------------------|--------------------------------------------|
+| `ci.yml`        | push / PR         | Lint (ruff) + tests + coverage badge       |
+| `cd.yml`        | push to `main`    | Build & push Docker images to Docker Hub   |
+| `docs.yml`      | push to `main`    | Build Sphinx docs → GitHub Pages           |
+| `security.yml`  | push / PR / daily | Secret scanning with gitleaks              |
 
-## Docker
-
-```bash
-docker build -t python-professional-template .
-docker run python-professional-template
-```
-
-## Code de conduite
-
-Ce projet respecte le [Contributor Covenant](.github/CODE_OF_CONDUCT.md).
-
-## Contributeurs
-
-- [@FidelMH](https://github.com/FidelMH)
-
-## Structure
+## Project Structure
 
 ```
 .
-├── app/
+├── app_api/           # FastAPI backend
 │   ├── main.py
-│   ├── moncsv.csv
-│   └── modules/mon_module.py
+│   ├── maths/
+│   ├── models/
+│   └── modules/       # DB connection & CRUD
+├── app_front/         # Streamlit frontend
+│   ├── main.py
+│   └── pages/
 ├── tests/
-│   └── test_match_csv.py
 ├── docs/source/
 ├── .github/workflows/
-│   ├── ci.yml     # lint + tests + badge coverage
-│   └── docs.yml   # déploiement GitHub Pages
-├── Dockerfile
+├── docker-compose.yml
+├── Makefile
 └── pyproject.toml
 ```
+
+## Contributors
+
+- [@FidelMH](https://github.com/FidelMH)
