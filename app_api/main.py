@@ -11,6 +11,7 @@ from sqlalchemy.orm import Session
 load_dotenv()
 DEBUG = os.getenv("DEBUG", "false").lower() == "true"
 
+
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
