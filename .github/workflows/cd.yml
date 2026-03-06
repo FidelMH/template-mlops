@@ -1,6 +1,13 @@
 name: Continuous Deployment (Docker Hub)
 
+
 on:
+    workflow_run:
+      workflows: ["CI Quality Check"] # Doit correspondre exactement au 'name' dans ci.yml
+      types:
+        - completed
+      branches:
+      - main
     push:
         branches: ["main"] 
 jobs:
