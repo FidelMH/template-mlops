@@ -8,7 +8,6 @@ API_URL = os.getenv("API_URL", "http://localhost:8000")
 
 def write_data(name, age, score):
     """Send data to the API to create a new user."""
-    
     try:
         payload = {"name": name, "age": age, "score": score}
         response = requests.post(API_URL + "/data", json=payload)

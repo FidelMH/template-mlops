@@ -9,7 +9,6 @@ API_URL = os.getenv("API_URL", "http://localhost:8000")
 
 def read_data():
     """Retrieve data from the API."""
-    
     try:
         response = requests.get(API_URL + "/data")
         return response.json()
