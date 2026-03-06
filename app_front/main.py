@@ -26,7 +26,7 @@ def main():
 
     # Métriques
     try:
-        data = requests.get("http://localhost:8000/data").json()
+        data = requests.get(f"{API_URL}/data").json()
         col1, col2, col3 = st.columns(3)
         col1.metric("Utilisateurs", len(data))
         scores = [u["score"] for u in data]
