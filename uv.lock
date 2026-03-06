@@ -347,7 +347,6 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/e4/72/42e900510195b23a56bde950d26a51f8b723846bfcaa0286e90287f0422b/fastapi-0.135.1-py3-none-any.whl", hash = "sha256:46e2fc5745924b7c840f71ddd277382af29ce1cdb7d5eab5bf697e3fb9999c9e", size = 116999, upload-time = "2026-03-01T18:18:30.831Z" },
 ]
 
-
 [[package]]
 name = "gitdb"
 version = "4.0.12"
@@ -1171,7 +1170,6 @@ source = { virtual = "." }
 dependencies = [
     { name = "altair" },
     { name = "fastapi" },
-    { name = "git-filter-repo" },
     { name = "pandas" },
     { name = "python-dotenv" },
     { name = "sqlalchemy" },
@@ -1195,7 +1193,6 @@ dev = [
 requires-dist = [
     { name = "altair", specifier = "<5" },
     { name = "fastapi", specifier = ">=0.135.1" },
-    { name = "git-filter-repo", specifier = ">=2.47.0" },
     { name = "pandas", specifier = ">=3.0.1" },
     { name = "python-dotenv", specifier = ">=1.2.2" },
     { name = "sqlalchemy", specifier = ">=2.0.48" },
