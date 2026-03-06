@@ -2,7 +2,7 @@ name: Deploy Documentation
 
 
 on:
-  pull_request: 
+  push:  
     branches: [main] # Se lance à chaque fois que tu push sur main
 
 
