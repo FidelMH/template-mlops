@@ -1,5 +1,7 @@
 def test_post_data(client):
-    response = client.post("/data", json={"name": "Alice", "age": 30, "score": 100})
+    response = client.post(
+        "/data", json={"name": "Alice", "age": 30, "score": 100}
+    )
     assert response.status_code == 200
     assert response.json()["name"] == "Alice"
 

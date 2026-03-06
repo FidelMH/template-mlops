@@ -1,12 +1,15 @@
-import streamlit as st
+import os
+
 import pandas as pd
 import requests
-import os
+import streamlit as st
 
 API_URL = os.getenv("API_URL", "http://localhost:8000")
 
 
 def read_data():
+    """Retrieve data from the API."""
+    
     try:
         response = requests.get(API_URL + "/data")
         return response.json()

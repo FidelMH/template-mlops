@@ -1,5 +1,5 @@
-import streamlit as st
 import requests
+import streamlit as st
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -26,7 +26,9 @@ def main():
         col1, col2, col3 = st.columns(3)
         col1.metric("Utilisateurs", len(data))
         scores = [u["score"] for u in data]
-        col2.metric("Score moyen", round(sum(scores) / len(scores), 1) if scores else 0)
+        col2.metric(
+            "Score moyen", round(sum(scores) / len(scores), 1) if scores else 0
+        )
         col3.metric("Meilleur score", max(scores) if scores else 0)
     except Exception:
         pass
