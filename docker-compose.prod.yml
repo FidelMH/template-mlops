@@ -22,7 +22,7 @@ services:
       retries: 5
 
   app_api:
-    image: mfidel/devops-template-api
+    image: mfidel/devops-template-api:latest
     env_file:
       - .env
     ports:
@@ -35,8 +35,7 @@ services:
     command: python main.py
   
   app_front:
-    build: ./app_front
-    container_name: app_front
+    image: mfidel/devops-template-front:latest
     environment:
       - API_URL=http://app_api:8000
     networks:
