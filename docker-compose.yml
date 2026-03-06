@@ -13,6 +13,11 @@ services:
       - POSTGRES_DB=${POSTGRES_DB}
     networks:
       - app_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
   app_api:
     build: ./app_api
@@ -24,7 +29,8 @@ services:
     networks:
       - app_network
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     command: python main.py
   
   app_front:
