@@ -6,8 +6,7 @@ load_dotenv()
 
 
 def main():
-    """Page d'accueil avec statut de l'API et métriques.
-    """
+    """Page d'accueil avec statut de l'API et métriques."""
     st.title("Gestion des utilisateurs")
     st.write("Bienvenue ! Utilisez le menu pour naviguer.")
 
